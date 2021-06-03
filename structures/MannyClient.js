@@ -1,4 +1,5 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from 'discord-akairo'
+import SlashCommandHandler from './SlashCommandHandler'
 import Database from './Database'
 import ms from 'ms'
 import { Signale } from 'signale'
@@ -83,6 +84,10 @@ class MannyClient extends AkairoClient {
       }
     })
 
+    this.slashCommandHandler = new SlashCommandHandler(this, {
+      directory: './commands/slash/'
+    })
+
     this.listenerHandler = new ListenerHandler(this, {
       directory: './listeners/'
     })
@@ -92,16 +97,20 @@ class MannyClient extends AkairoClient {
 
   init () {
     this.commandHandler.useListenerHandler(this.listenerHandler)
+    // this.slashCommandHandler.useListenerHandler(this.listenerHandler)
 
     this.listenerHandler.setEmitters({
       commandHandler: this.commandHandler,
+      slashCommandHandler: this.slashCommandHandler,
       listenerHandler: this.listenerHandler
     })
 
     this.commandHandler.loadAll()
-    this.log.info('Commands loaded')
+    this.log.info('legacy commands loaded')
+    this.slashCommandHandler.loadAll()
+    this.log.info('slash commands loaded')
     this.listenerHandler.loadAll()
-    this.log.info('Listeners loaded')
+    this.log.info('listeners loaded')
   }
 
   async start () {
