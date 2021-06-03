@@ -22,7 +22,7 @@ class MannyClient extends AkairoClient {
     })
 
     this.commandHandler = new CommandHandler(this, {
-      directory: './commands/',
+      directory: './commands/legacy/',
       allowMention: true,
       commandUtil: true,
       commandUtilLifetime: ms('2m'),
