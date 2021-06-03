@@ -8,17 +8,15 @@ class MannyClient extends AkairoClient {
   constructor (config) {
     super({ ownerID: process.env.OWNER_ID }, {
       disableMentions: 'everyone',
-      ws: {
-        intents: [
-          'GUILDS',
-          'GUILD_MEMBERS',
-          'GUILD_BANS',
-          'GUILD_VOICE_STATES',
-          'GUILD_PRESENCES',
-          'GUILD_MESSAGES',
-          'DIRECT_MESSAGES'
-        ]
-      }
+      intents: [
+        'GUILDS',
+        'GUILD_MEMBERS',
+        'GUILD_BANS',
+        'GUILD_VOICE_STATES',
+        'GUILD_PRESENCES',
+        'GUILD_MESSAGES',
+        'DIRECT_MESSAGES'
+      ]
     })
 
     this.commandHandler = new CommandHandler(this, {
