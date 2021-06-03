@@ -10,7 +10,7 @@
     "@sentry/node": "^6.0.2",
     "cron": "^1.8.2",
     "discord-akairo": "^8.1.0",
-    "discord.js": "^12.5.1",
+    "discord.js": "^13.0.0-dev.086c3f0799d65c64c4e60d6370246a37a27a1eab",
     "esm": "^3.2.25",
     "luxon": "^1.25.0",
     "ms": "^2.1.3",
